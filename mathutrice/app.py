@@ -20,6 +20,7 @@ from mathutrice.database import Session as DBSession
 from apscheduler.schedulers.background import BackgroundScheduler
 from decimal import Decimal
 from mathutrice import models
+from mathutrice.referentiel import REFERENTIEL
 import msal
 import uvicorn
 import shutil
@@ -145,10 +146,7 @@ from mathutrice.fonctions_python.chatbot import (  # noqa: E402
     chat_stream_with_history,
     reset_conversation,
 )
-from mathutrice.fonctions_python.main import (  # noqa: E402
-    REFERENTIEL,
-    generate_mixed_test,
-)
+from mathutrice.fonctions_python.main import generate_mixed_test  # noqa: E402
 from mathutrice.fonctions_python.seed import seed_if_empty  # noqa: E402
 from mathutrice.fonctions_python.session_generator import (  # noqa: E402
     build_notion_data_with_scores,

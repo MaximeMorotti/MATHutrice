@@ -15,7 +15,7 @@ from datetime import datetime, UTC
 from sqlmodel import Session, select
 
 from mathutrice import models
-from mathutrice.fonctions_python.main import REFERENTIEL
+from mathutrice.referentiel import REFERENTIEL
 
 
 # Le REFERENTIEL ne porte pas de description : elles vivent ici,

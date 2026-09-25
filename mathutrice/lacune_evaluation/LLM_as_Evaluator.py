@@ -2,7 +2,7 @@ import json
 import re
 
 from mathutrice.referentiel import REFERENTIEL
-from mathutrice.fonctions_python.llm_client import client, MODEL
+from mathutrice.llm_client import client, MODEL
 
 
 def _build_flat_competences(referentiel):

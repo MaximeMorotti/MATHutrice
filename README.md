@@ -29,6 +29,15 @@ uvicorn mathutrice.app:app --port 8000
 
 Open <http://localhost:8000/>. You are sent to the **connexion de développement** page, where you choose an email address and a role. The SQLite database (`mathutrice.db`) is created on first start.
 
+### Seed data
+
+On every start, the application fills whatever is still empty:
+
+- **Notions and competences**, taken from the referentiel (`REFERENTIEL` in `mathutrice/fonctions_python/main.py`), when the `notion` table is empty. This happens in every `AUTH_MODE`.
+- **One user per role**, when the `user_` table is empty and `AUTH_MODE=dev`: `etudiant.demo@epfedu.fr` (Student), `enseignant.demo@epf.fr` (Teacher) and `admin.demo@epf.fr` (Admin). They appear as one-click buttons on `/dev/login`. They are never created in `entra` mode, where a seeded Admin would hand that role to whoever really owns the address.
+
+Data that already exists is never modified. To start again from the seed, stop the application, delete `mathutrice.db`, and start it again.
+
 To check that a fresh clone really runs, follow the [smoke test](docs/smoke-test.md).
 
 ## Configuration

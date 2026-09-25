@@ -52,6 +52,11 @@ def get_referentiel():
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
 
+    # Les utilisateurs de démo ne sont créés qu'en connexion de développement :
+    # avec Entra, un Admin semé donnerait ce rôle au vrai titulaire de l'adresse.
+    with DBSession(engine) as session:
+        seed_if_empty(session, with_users=AUTH_MODE == "dev")
+
 
 # ------------------------------------------------------------------
 # Cleanup — supprime conversations + messages de plus de 24h
@@ -144,6 +149,7 @@ from mathutrice.fonctions_python.main import (  # noqa: E402
     REFERENTIEL,
     generate_mixed_test,
 )
+from mathutrice.fonctions_python.seed import seed_if_empty  # noqa: E402
 from mathutrice.fonctions_python.session_generator import (  # noqa: E402
     build_notion_data_with_scores,
     generate_next_question,
